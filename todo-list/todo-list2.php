@@ -81,3 +81,53 @@ if($result->num_rows > 0){
 
 </body>
 </html>
+
+<?php 
+
+# conectar ao banco
+$localhost = 'localhost';
+$usuario = 'root';
+$senha = '';
+$database = 'to_do_list';
+$conn = new mysqli($localhost,$usuario, $senha, $database);
+
+if($conn -> connect_error){
+    die('deu erro ao tentar conectar '. mysqli_connect_error());
+}
+
+# criacao tarefa
+
+if (isset ($_POST['descricao']) && !empty(trim ($_POST['descricao']))) {
+ $descricao = $conn -> real_escape_string(string: $_POST ['descricao']);
+ $sqlcreate = " INSERT INTO tarefas (descricao) VALUES ('$descricao')";
+
+   if($conn -> query($sqlcreate) === TRUE) { 
+   header ("location: todo-list2.php");
+
+    }
+}
+
+# Apagar
+
+if(isset($_GET['delete'])){
+    $id = intval($_GET['delete']); 
+    $sqlDelete = "DELETE FROM tarefas WHERE id = $id"; 
+
+    if($conn->query($sqlDelete) === TRUE){
+        header("location: todo-list2.php"); 
+    }
+}
+
+# listar tarefas
+$tarefas = [];
+
+$sqlselect = "SELECT * FROM tarefas ORDER BY data_criacao DESC";
+$result = $conn->query($sqlselect);
+
+    if($result-> num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $tarefas[] = $row;
+    }
+}
+?> 
+
