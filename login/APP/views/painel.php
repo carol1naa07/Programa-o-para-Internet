@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION['id'])) {
-    die("Você não está logado. <a href='index.php'>Entrar</a>");
+    die("você não pode acessar essa página porque não esta logado. <p> <a href=\"login.php\">sair</a></p>");
 }
 ?>
 
@@ -16,6 +16,6 @@ if (!isset($_SESSION['id'])) {
 </head>
 <body>
     <h1>Bem-vindo, <?php echo $_SESSION['nome']; ?></h1>
-
+ <a href="index.php"> <button>SAIR</button></a>
 </body>
 </html>

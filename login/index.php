@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/controllers/AuthController.php';
+require_once __DIR__ . '/APP/controllers/AuthController.php';
 
 if (!isset($_SESSION)) {
     session_start();
@@ -16,6 +16,10 @@ switch ($action) {
 
     case 'painel':
         $controller->painel();
+        break;
+
+    case 'erro':
+        $controller->logout();
         break;
 
     default:

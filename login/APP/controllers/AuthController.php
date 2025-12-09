@@ -29,17 +29,21 @@ class AuthController {
 
                 header("Location: index.php?action=painel");
                 exit;
+
             } else {
                 $erro = "Email ou senha incorretos.";
-                include __DIR__ . '/../views/erro.php';
             }
         } else {
             $erro = "Preencha todos os campos.";
-            include __DIR__ . '/../views/erro.php';
         }
     }
 
     public function painel() {
         include __DIR__ . '/../views/painel.php';
+    }
+
+    public function logout(){
+        session_destroy();
+        include __DIR__ . '../views/login.php';
     }
 }
