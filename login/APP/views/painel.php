@@ -1,13 +1,11 @@
 <?php
-if (!isset($_SESSION)) {
+if(!isset($_SESSION)){
     session_start();
 }
-
-if (!isset($_SESSION['id'])) {
-    die("você não pode acessar essa página porque não esta logado. <p> <a href=\"login.php\">sair</a></p>");
+if(!isset($_SESSION['id'])){
+    header('Location: protect.php');
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +13,10 @@ if (!isset($_SESSION['id'])) {
     <title>Painel</title>
 </head>
 <body>
-    <h1>Bem-vindo, <?php echo $_SESSION['nome']; ?></h1>
- <a href="index.php"> <button>SAIR</button></a>
+
+<h1>Seja Bem-vindo, <?php echo $_SESSION['nome']; ?>!</h1>
+
+<p><a href="index.php?action=logout">Sair</a></p>
+
 </body>
 </html>

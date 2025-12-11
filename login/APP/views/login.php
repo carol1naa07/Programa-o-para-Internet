@@ -1,24 +1,32 @@
+<?php 
+if(isset($_SESSION['erro'])){
+echo"<script>alert('".$_SESSION['erro']."');</script>";
+$_SESSION['erro'] = null;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login MVC</title>
+    <title>Login</title>
 </head>
 <body>
-    <h1>Acesse sua conta</h1>
 
-    <form action="index.php?action=logar" method="POST">
-        <p>
-            <label>Email:</label>
-            <input type="text" name="email">
-        </p>
+<h1>Acesse sua conta</h1>
 
-        <p>
-            <label>Senha:</label>
-            <input type="password" name="senha">
-        </p>
-
+<form action="index.php?action=login" method="POST">
+    <p>
+        <label>E-mail</label>
+        <input type="text" name="email">
+    </p>
+    <p>
+        <label>Senha</label>
+        <input type="password" name="senha">
+    </p>
+    <p>
         <button type="submit">Entrar</button>
-    </form>
+    </p>
+</form>
+
 </body>
 </html>

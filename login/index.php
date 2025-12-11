@@ -1,24 +1,20 @@
 <?php
-require_once __DIR__ . '/APP/controllers/AuthController.php';
+require_once __DIR__ . '/app/controllers/usuarioController.php';
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-$controller = new AuthController();
+$controller = new UsuarioController();
 
 $action = $_GET['action'] ?? 'index';
 
 switch ($action) {
-    case 'logar':
-        $controller->logar();
+    case 'login':
+        $controller->login();
         break;
 
     case 'painel':
         $controller->painel();
         break;
 
-    case 'erro':
+    case 'logout':
         $controller->logout();
         break;
 
@@ -26,3 +22,4 @@ switch ($action) {
         $controller->index();
         break;
 }
+?>
